@@ -10,22 +10,29 @@
 </head>
 
 <body>
-
     <div id="app">
-        <h1>What didi you get in VueJS ?</h1>
-        Your score:<input v-model="score" />
-
-        <p v-if="score>70">PASS!</p>
-        <p v-else>It's hard to pass.</p>
+        <ul>
+            <li v-for="color in colors"></li>
+        </ul>
     </div>
 
     <script>
 
         Vue.createApp({
+
             data() {    //變數放這裡
                 return {
-                    message: 'Hello',
-                    score: 0,
+                    man = {
+                        name: 'peter',
+                        age: 50,
+                        faurolateColor: ['whit', '']
+                    car: {
+                            mode: 'X5',
+                            year: 2023,
+                        }
+                    },
+                    retired: false,
+
                 }
             },
 
