@@ -1,45 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue</title>
     <script src="./js/vue.global.js"></script>
-
 </head>
-
 <body>
+    <div id="app"> <!-- HTML DOM template -->
+        <!-- 陣列 -->
+        <ul>
+            <li v-for="(color,index) in colors">{{index}}: {{color}}</li>
+        </ul>
 
-    <div id="app">
-        <h1>Vue App</h1>
-        <p>Name: {{ man.name }}</p>
-        <p>Age: {{ man.age }}</p>
-        <p>Colors: {{ man.colors }}</p>
-        <p>Car Model: {{ car.model }}</p>
-        <p>Car Year: {{ car.year }}</p>
-        <p v-if="retired">Retired: Yes</p>
-        <p v-else>Retired: No</p>
+        <!-- 物件 -->
+        <ul>
+            <li v-for="(item,key) in man">{{key}}: {{item}}</li>
+        </ul>
     </div>
 
     <script>
+        // for(let i = 0; i < 5; i++){...}  // 針對陣列
+
+        // let man = {
+        //     name: 'Peter',
+        //     age: 40,
+        //     gender: 'male',
+        //     favoriateColor: ['white','gray','black'],
+        //     car: {
+        //         make: 'BMW',
+        //         mode: 'X5',
+        //         year: 2023,
+        //     },
+        //     retired: false,
+        // }
+
+        // for(let key in 物件或陣列){}
+        // for(let key in man){
+        //     console.log(key)       // 印出「:」左邊的 key 值
+        //     console.log(man[key])  // 印出「:」右邊的 value 值
+        // }
+
         Vue.createApp({
-            data() {
+            data(){     // 變數放這裡
                 return {
+                    message: 'Hello',
+                    colors: ['red','orange','yellow','green','blue','indigo','violet'],
                     man: {
                         name: 'Peter',
-                        age: 50,
-                        colors: ['white', 'black', 'red', 'blue', 'green', 'yellow', 'orange', 'purple', 'pink', 'brown']
+                        age: 40,
+                        gender: 'male',
+                        favoriateColor: ['white','gray','black'],
+                        car: {
+                            make: 'BMW',
+                            mode: 'X5',
+                            year: 2023,
+                        },
+                        retired: false,
                     },
-                    car: {
-                        model: 'X5',
-                        year: 2023
-                    },
-                    retired: false
-                };
-            }
-        }).mount('#app');
+                }
+            },       
+        }).mount('#app')
+    
     </script>
 </body>
-
 </html>

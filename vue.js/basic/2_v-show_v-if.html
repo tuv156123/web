@@ -1,37 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue</title>
     <script src="./js/vue.global.js"></script>
-
 </head>
-
 <body>
-    <div id="app">
+    <div id="app"> <!-- HTML DOM template -->
         <h1>{{message}}</h1>
 
-        <p v-show="loading">loading(v-show)</p>
-        <p v-if="loading">loading(v-if)</p>
+        <p v-show="loading">Loading(v-show)</p>
+        <p v-if="loading">Loading(v-if)</p>
 
+        <!-- if false, 檢查 devtools ==> Elements -->
     </div>
 
     <script>
-
+        // if(條件判斷){...}
         Vue.createApp({
-            data() {    //變數放這裡
+            data(){     // 變數放這裡
                 return {
                     message: 'Hello',
                     score: 100,
                     loading: false,
                 }
-            },
-
+            },       
         }).mount('#app')
-
+    
     </script>
 </body>
-
 </html>
