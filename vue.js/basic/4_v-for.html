@@ -10,34 +10,35 @@
 </head>
 
 <body>
+
     <div id="app">
-        <ul>
-            <li v-for="color in colors"></li>
-        </ul>
+        <h1>Vue App</h1>
+        <p>Name: {{ man.name }}</p>
+        <p>Age: {{ man.age }}</p>
+        <p>Colors: {{ man.colors }}</p>
+        <p>Car Model: {{ car.model }}</p>
+        <p>Car Year: {{ car.year }}</p>
+        <p v-if="retired">Retired: Yes</p>
+        <p v-else>Retired: No</p>
     </div>
 
     <script>
-
         Vue.createApp({
-
-            data() {    //變數放這裡
+            data() {
                 return {
-                    man = {
-                        name: 'peter',
+                    man: {
+                        name: 'Peter',
                         age: 50,
-                        faurolateColor: ['whit', '']
-                    car: {
-                            mode: 'X5',
-                            year: 2023,
-                        }
+                        colors: ['white', 'black', 'red', 'blue', 'green', 'yellow', 'orange', 'purple', 'pink', 'brown']
                     },
-                    retired: false,
-
-                }
-            },
-
-        }).mount('#app')
-
+                    car: {
+                        model: 'X5',
+                        year: 2023
+                    },
+                    retired: false
+                };
+            }
+        }).mount('#app');
     </script>
 </body>
 
