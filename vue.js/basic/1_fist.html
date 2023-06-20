@@ -10,9 +10,37 @@
 </head>
 
 <body>
-    <h1>Hello</h1>
+    <div id="app">
+        <h1>{{message}}</h1>
+        <input type="text" v-model="message" />
+
+    </div>
+
     <script>
-        Vue.createApp()
+        // //step.1
+        // Vue.createApp()
+
+        // //step.2
+        // Vue.createApp().mount()
+
+        // //step.3
+        // Vue.createApp().mount('#app')
+
+        // //step.4
+        // Vue.createApp({}).mount('#app')
+
+        //step.5
+        Vue.createApp({
+            //data: function(){}, //ES5
+            //data(){},    //ES6
+            data() {    //變數放這裡
+                return {
+                    message: 'Hello',
+                    score: 100,
+                }
+            },
+
+        }).mount('#app')
 
     </script>
 </body>
