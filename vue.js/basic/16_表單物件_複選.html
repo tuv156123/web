@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="./js/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"> 
+        <!-- <input type="checkbox" name="interest" value="sleep">睡覺
+        <input type="checkbox" name="interest" value="game" checked>電動
+        <input type="checkbox" name="interest" value="read">閱讀
+        <input type="checkbox" name="interest" value="trip">旅遊
+        <input type="checkbox" name="interest" value="diving">潛水 -->
+
+        <input type="checkbox" v-model="interest" value="sleep">睡覺
+        <input type="checkbox" v-model="interest" value="game" checked>電動
+        <input type="checkbox" v-model="interest" value="read">閱讀
+        <input type="checkbox" v-model="interest" value="trip">旅遊
+        <input type="checkbox" v-model="interest" value="diving">潛水
+
+        <p>{{interest}}</p>
+        <hr>
+
+        <input type="checkbox" v-model="agree"> 我同意
+        <p>{{agree}}</p>
+    </div>
+
+    <script>     
+        Vue.createApp({
+            data(){
+                return {
+                    // interest: [],
+                    interest: ['game'],   // 如果要預選
+                    agree: false,
+                }
+            },
+            methods: {},  
+            computed: {},
+        }).mount('#app')
+    </script>
+</body>
+</html>
