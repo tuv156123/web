@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Vue</title>
@@ -9,13 +10,14 @@
     <!-- CSS 寫法 3: linked
     <link rel="stylesheet" href="XX.css">  -->
 </head>
+
 <body>
     <!-- 綁定 style: 標籤賦予的 style 屬性的屬性值由 Vue 來決定 -->
-    
+
     <!-- CSS 寫法 1: inline -->
     <!-- <p style="CSS的語法"></p>   -->
 
-    <div id="app"> 
+    <div id="app">
         <button @click="enlarge">Enlarge</button>
         <button @click="shrink">Shrink</button>
 
@@ -23,27 +25,24 @@
         <p :style="changeSize">Lorem ipsum dolor sit amet.</p>
     </div>
 
-    <script>     
+    <script>
         Vue.createApp({
-            data(){
+            data() {
                 return {
-                    size: 16,          
+                    size: 16,
                 }
             },
             methods: {
-                enlarge(){
+                enlarge() {
                     this.size += 2
                 },
-                shrink(){
-                    if(this.size > 0){
-                        this.size -= 2
-                    }else{
-                        this.size = 0
-                    }
-                },
-            },  
+                shrink() {
+                    if (this.size <= 0) return
+                    this.size -= 2
+                }
+            },
             computed: { // 函數(方法)也可以放這裡，放在這裡的函數「不傳參數，有傳回值」
-                changeSize(){
+                changeSize() {
                     return {
                         fontSize: `${this.size}px`,
                         color: 'maroon',
@@ -55,4 +54,5 @@
         }).mount('#app')
     </script>
 </body>
+
 </html>
