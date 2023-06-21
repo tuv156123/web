@@ -33,17 +33,17 @@
             beforeCreate() {
                 console.log(`beforeCreate() --> count: ${this.count}`)
             },
-            created() {
+            created() {   // 常用
                 console.log(`created() --> count: ${this.count}`)
             },
             beforeMount() {},
-            mounted() {  // 非同步大部分放這裡
+            mounted() {  // 常用，非同步大部分放這裡
                 
             },
             beforeUpdate() {
                 console.log(`beforeUpdate() --> count: ${this.count}`)
             },
-            updated() {
+            updated() {  // 常用
                 console.log(`updated() --> count: ${this.count}`)
             },
             beforeUnmount() {
