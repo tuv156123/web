@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="./js/vue.global.js"></script>
+    <!-- CSS 寫法 2: embedded 
+    <style></style> -->
+    <!-- CSS 寫法 3: linked
+    <link rel="stylesheet" href="XX.css">  -->
+</head>
+<body>
+    <!-- 綁定 style: 標籤賦予的 style 屬性的屬性值由 Vue 來決定 -->
+    
+    <!-- CSS 寫法 1: inline -->
+    <!-- <p style="CSS的語法"></p>   -->
+
+    <div id="app"> 
+        <button @click="enlarge">Enlarge</button>
+        <button @click="shrink">Shrink</button>
+
+        <!-- <p style="font-size: 20px;color: maroon;">Lorem ipsum dolor sit amet.</p> -->
+        <p :style="changeSize">Lorem ipsum dolor sit amet.</p>
+    </div>
+
+    <script>     
+        Vue.createApp({
+            data(){
+                return {
+                    size: 16,          
+                }
+            },
+            methods: {
+                enlarge(){
+                    this.size += 2
+                },
+                shrink(){
+                    if(this.size > 0){
+                        this.size -= 2
+                    }else{
+                        this.size = 0
+                    }
+                },
+            },  
+            computed: { // 函數(方法)也可以放這裡，放在這裡的函數「不傳參數，有傳回值」
+                changeSize(){
+                    return {
+                        fontSize: `${this.size}px`,
+                        color: 'maroon',
+                        fontFamily: 'Calibri',
+                        textDecoration: 'underline',
+                    }
+                },
+            },
+        }).mount('#app')
+    </script>
+</body>
+</html>
