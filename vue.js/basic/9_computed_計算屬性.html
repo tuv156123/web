@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="./js/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"> <!-- HTML DOM template -->
+        <p>
+            身高(公分): <input v-model="height">
+        </p>
+        <p>
+            體重(公斤): <input v-model="weight">
+        </p>
+        <p>
+            BMI: <span>{{calculate}}</span>
+        </p>
+    </div>
+
+    <script>  
+        // BMI ==> 體重 (公斤) / (身高 / 100) 的平方      
+        Vue.createApp({
+            data(){     // 變數放這裡
+                return {
+                    message: 'Hello',
+                    height: 0,
+                    weight: 0,
+                    // calculate: this.weight / Math.pow(this.height / 100, 2),
+                }
+            },
+            methods: {  // 函數(方法)大部分放這裡
+                
+            },  
+            computed: { // 函數(方法)也可以放這裡
+                calculate(){
+                    if(this.weight > 0 && this.height > 0){
+                        let bmi = this.weight / Math.pow(this.height / 100, 2)
+                        return bmi.toFixed(3)
+                    }else{
+                        return 0
+                    }
+                },
+            },
+        }).mount('#app')
+
+        // 函數三部曲: 宣告、定義和呼叫
+        // 1 不傳參數，沒有傳回值 -- methods
+        // function active(){  // 宣告、定義
+        //     console.log(123);
+        // }
+        // active()    // 呼叫
+        // -------------------------
+        // 2 有傳參數，沒有傳回值 -- methods
+        // function active(temp){  // 宣告、定義
+        //     console.log(temp);
+        // }
+        // active(123)    // 呼叫
+        // -------------------------
+        // 3 有傳參數，有傳回值 -- methods
+        // function active(temp){  // 宣告、定義
+        //     console.log(temp);
+        //     return 'Good!'
+        // }
+        // let ans = active(123)    // 呼叫
+        // -------------------------
+        // 4 不傳參數，有傳回值 -- computed
+        // function active(){  // 宣告、定義
+        //     return 'Good!'
+        // }
+        // let ans = active()  
+
+    </script>
+</body>
+</html>

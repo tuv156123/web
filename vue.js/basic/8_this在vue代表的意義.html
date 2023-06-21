@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="./js/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"> <!-- HTML DOM template -->
+        <ul>
+            <li v-for="color in colors" @click="showColor(color)">{{color}}</li>
+        </ul>
+    </div>
+
+    <script> 
+        // About this
+
+        // .html <button id="theButton">click</button>
+        // .js
+        //     let theButton = document.getElementById('theButton')
+        //     theButton.addEventListener('click',function(e){
+        //         console.log(e.target.nodeName);  // BUTTON
+        //         console.log(this.nodeName);  // BUTTON
+        //         console.log(e.type);  // click
+        //     })
+        // ※ this 在 JavaScript 代表執行當下的外層物件，所以 this 在執行的時候才有意義
+        //    至於 this 代表哪一個物件，跟他的情境 (context) 有關
+
+        // (1)
+        //     function action(){
+        //         console.log(this);
+        //     }
+        //     呼叫: action()
+        //     結果: window 物件
+    
+        // (2) 
+        //     const man = {
+        //         name: 'Peter',
+        //         sayHello: function(){
+        //             console.log(this)
+        //         },
+        //     }
+        //     呼叫: man.sayHello()
+        //     結果: man 物件
+
+        // (3) 改成箭頭函數 (arrow function)
+        //     const man = {
+        //         name: 'Peter',
+        //         sayHello: () => console.log(this),
+        //     }
+        //     呼叫: man.sayHello()
+        //     結果: window 物件
+
+        // (4) IIFE (Immediately Invoked Function Expression)
+        //     let hello = function(name){
+        //         console.log(`Hello, ${name}`);
+        //     }
+        //     呼叫: hello('Peter')
+        //     結果: Hello, Peter
+        //     ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ 
+
+        //     let hello = function(name){
+        //         console.log(`Hello, ${name}`);
+        //     }('Peter')
+
+        //     結果: Hello, Peter
+        
+        // (5) Vue 的 this 代表 Vue 本身
+
+        Vue.createApp({
+            data(){     // 變數放這裡
+                return {
+                    message: 'Hello',
+                    colors: ['red','orange','yellow','green','blue','indigo','violet'],
+                }
+            },
+            methods: {  // 函數(方法)大部分放這裡
+                showColor(theColor){
+                    // alert(`Hello, ${theColor}`)
+                    alert(`${this.message}, ${theColor}`)
+                    
+                    this.action()
+                },
+                action(){
+                    alert(`Hi, showColor@@`)
+                },
+            },  
+        }).mount('#app')
+    </script>
+</body>
+</html>
