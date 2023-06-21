@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="./js/vue.global.js"></script>
+</head>
+<body>
+    <!-- 掛載 (mount): 將 Vue 和 HTML DOM 做連結 -->
+    <div id="app"> 
+        <h1>{{message}}</h1>
+    </div>
+       
+    <script> 
+        // 1 先宣告再掛載
+        // const App = Vue.createApp({
+        //     data(){
+        //         return {
+        //             message: 'Hello',
+        //         }
+        //     },
+        //     methods: {},  
+        //     computed: {},
+        // })        
+        // App.mount('#app')  
+
+        // 2 使用 template 和 HTML DOM 做連結
+        const App = Vue.createApp({
+            data(){
+                return {
+                    message: 'Hello',
+                }
+            },
+            methods: {},  
+            computed: {},
+            template: `
+                <h1>text</h1>
+                <h2>text</h2>
+                <h3>text</h3>
+                <h4>text</h4>
+            `,
+        })        
+        App.mount('#app') 
+
+
+
+        let longString = 'These several dozen northernmost islands of the Florida' +
+        ' Keys archipelago are best known for their quiet sunsets and offshore coral' +
+        ' reefs, but in 1961 it seemed inevitable they would become south Florida\'s ' +
+        'next luxury waterfront community. Developers had even ferried a voting box and' +
+        ' 14 absentee landowners to one of the sparsely populated islands, where they ' +
+        'cast ballots making their new city of Islandia official. '
+        let backtickString = `These several dozen northernmost islands of the Florida
+         Keys archipelago are best known for their quiet sunsets and offshore coral
+          reefs, but in 1961 it seemed inevitable they would become south Florida's
+           next luxury waterfront community. Developers had even ferried a voting 
+           box and 14 absentee landowners to one of the sparsely populated islands,
+            where they cast ballots making their new city of Islandia official. `
+        let tagString = `
+        <p>
+            <label for="search">Search: </label>
+            <input type="search" id="search">
+        </p>
+        <ul>
+            <li><span>Ann Hathaway</span></li>
+            <li><span>Robert De Niro</span></li>
+            <li><span>Bruce Willis</span></li>
+            <li><span>Cybill Shepherd</span></li>
+            <li><span>Robert Readford</span></li>
+            <li><span>Maryl Streep</span></li>
+            <li><span>Bred Pitt</span></li>
+            <li><span>Robin Williams</span></li>
+            <li><span>Annete Bening</span></li>
+            <li><span>Robert Downey Jr.</span></li>
+            <li><span>Demi Moore</span></li>
+            <li><span>Angelina Jolie</span></li>
+        </ul>`
+    </script>
+</body>
+</html>
