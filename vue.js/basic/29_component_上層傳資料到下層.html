@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="./js/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"> <!-- HTML DOM template -->
+        <my-component message="Hello" text="VueJS"></my-component>
+        <your-component the-message="Hello" the-text="World"></your-component>
+    </div>
+       
+    <script> 
+        const App = Vue.createApp({
+            data(){},
+
+            components: {
+                'my-component': {
+                    props: ['message','text'],
+                    template: `<h1>{{message}}, {{text}}!</h1>`,
+                },
+                'your-component': {
+                    // props: ['the-message','the-text'],  // ok
+                    props: ['theMessage','theText'],    // ok
+
+                    // template: `<h1>{{the-message}}, {{the-text}}!</h1>`,    // 不可以這樣寫
+
+                    // 使用上必須用 camelCase
+                    template: `<h1>{{theMessage}}, {{theText}}!</h1>`,
+                },
+            },
+        }) 
+        App.mount('#app')        
+
+    </script>
+</body>
+</html>
