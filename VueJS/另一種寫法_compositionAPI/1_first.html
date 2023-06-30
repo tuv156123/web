@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app"> <!-- HTML DOM template -->
+        <h1>{{message}}</h1>
+        <input type="text" v-model="message">
+    </div>
+
+    <script>
+        const {ref} = Vue
+        const App = {
+            setup(){
+                // let message = 'Hello'        // 無法被綁定
+                let message = ref('Hello')      // 這才能被 Vue 追蹤
+                let score = 100
+
+                return {
+                    message,
+                }
+            },
+        }
+        Vue.createApp(App).mount('#app')    
+    </script>
+</body>
+</html>

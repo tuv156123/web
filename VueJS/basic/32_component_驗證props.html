@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="./js/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"> <!-- HTML DOM template -->
+        <counter :init="count" text="doNothing"></counter>
+        <!-- counter 組件的值由 root 的 count 取得 -->
+    </div>
+       
+    <script> 
+        const App = Vue.createApp({
+            data(){
+                return {
+                    count: 0,
+                }
+            },
+        })
+
+        App.component('counter',{
+            // props 大部分是陣列
+            // props: ['init','text'],
+
+            // https://cn.vuejs.org/guide/components/props.html#prop-validation
+            // props 也可以宣告成物件(驗證用)
+            // props: {
+            //     init: {},
+            //     text: {},
+            // },
+
+            // devtools --> console
+            props: {
+                init: {
+                    type: Number,
+                    // type: [Number,String,Boolean],  // 多種可能的型態
+                    // default: 100,   // 若上層沒有傳值進來，會使用預設值
+                    // default(){return 即時運算的結果},   
+                    // default(){
+                    //     return parseInt(Math.random() * 6) + 1
+                    // },  
+                    
+                    required: true, // 表示必須要傳資料
+                    validator(val){    // 自訂驗證方式
+                        return val > 20
+                    },
+                },
+                text: {},
+            },
+
+            data(){
+                return {
+                    count: this.init,
+                }
+            },               
+            template: `
+                <button @click="count+=1">Add</button>
+                <h3>counter ==> {{count}}</h3>
+            `,
+        })
+
+        App.mount('#app')        
+
+    </script>
+</body>
+</html>

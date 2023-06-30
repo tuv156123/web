@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="./js/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"> <!-- HTML DOM template -->
+        <my-component></my-component>
+        <my-component></my-component>
+        <my-component></my-component>
+        <my-component></my-component>
+
+        <counter></counter>
+        
+    </div>
+       
+    <script> 
+        const App = Vue.createApp({
+            data(){
+                return {
+                   
+                }
+            },
+            methods: {},  
+            computed: {},
+
+            // local component
+            components: {   // kebab-case --> camelCase --> PascalCase
+                // 組件名稱: {},
+                'my-component': {  // kebab-case
+                    template: `<h1 style="color:red;">Hello, component!</h1>`,
+                },
+                myComponent: {    // camelCase
+                    template: `<h1 style="color:green;">Hello, component!</h1>`,
+                },
+                MyComponent: {    // PascalCase
+                    template: `<h1 style="color:blue;">Hello, component!</h1>`,
+                },
+            },
+        })  
+        // global component
+        // App.component('組件名稱', {
+        //     ....
+        //     template: `定義視覺元件`,
+        // })
+
+        App.component('counter', {
+            template: `
+            <div style="border:1px solid #ccc;width:280px;height: 300px;text-align:center;">
+                <h1>野原新之助</h1>
+                <img src="../../images/Shinnosuke/Shinnosuke10.png">
+            </div>
+            `,
+        })
+        
+        App.mount('#app') 
+        
+
+    </script>
+</body>
+</html>

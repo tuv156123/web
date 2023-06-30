@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自訂物件: Object</title>
+</head>
+<body>
+    <script>
+        1 建立 Object 物件
+            let obj = {}
+            let obj = new Object()
+
+            let man = {
+                name: 'Peter',
+                age: 40,
+                gender: 'male',
+                favoriateColor: ['white','gray','black'],
+                car: {
+                    make: 'BMW',
+                    mode: 'X5',
+                    year: 2023,
+                },
+                retired: false,
+                sayHello(){},
+            }
+
+
+        2 如何存取?
+            for(let key in 物件或陣列){}
+            for(let key in man){
+                console.log(key)       // 印出「:」左邊的 key 值
+                console.log(man[key])  // 印出「:」右邊的 value 值
+            }
+
+        3
+            man.name ---> Peter
+                物件的陣列表示法: man['name']
+            man.favoriateColor[1] ---> gray
+                物件的陣列表示法: man['favoriateColor'][1]
+            man.car.mode ---> X5
+                物件的陣列表示法: man['car']['mode']
+            man.sayHello()
+
+        4 一定要用物件的陣列表示法
+            const items = {
+                10: 'Hat',
+                20: 'T-shirt',
+                30: 'iPhone',
+                40: 'iPad',
+                50: 'Mac Pro',
+                60: 'AirPods',
+            }
+
+            items.10    ---> XX
+            items[10]   ---> Hat
+    </script>
+</body>
+</html>

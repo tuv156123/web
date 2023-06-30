@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@3"></script>
+
+</head>
+<body>
+    <div id="app"> <!-- HTML DOM template -->
+        <ul>
+            <li v-for="color in colors" @click="showColor(color)">{{color}}</li>
+        </ul>
+    </div>
+
+    <script> 
+        const {ref, reactive} = Vue
+        const App = {
+            setup(){
+                const message = ref('Hello')
+                const colors = reactive(['red','orange','yellow','green','blue','indigo','violet'])
+ 
+                const showColor= theColor => {
+                    alert(`${message.value}, ${theColor}`)
+
+                    action()
+                }
+                const action= () => alert(`Hi, showColor@@`)
+
+                return {
+                    message,
+                    colors,
+                    showColor,
+                    action,
+                }
+            },
+        }
+        Vue.createApp(App).mount('#app') 
+
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app"> <!-- HTML DOM template -->
+        <ul>
+            <!-- <li v-for="color in colors" v-on:click="showColor(color)">{{color}}</li> -->
+            
+            <!-- v-on 的縮寫是「@」 -->
+            <li v-for="color in colors" @click="showColor(color)">{{color}}</li>
+        </ul>
+
+        <hr>
+        <p v-pre>@@{{message}}@@</p>
+    </div>
+
+    <script> 
+        const {ref, reactive} = Vue
+        const App = {
+            setup(){
+                const colors = reactive(['red','orange','yellow','green','blue','indigo','violet'])
+ 
+                const showColor= theColor => alert(`Hello, ${theColor}`)
+
+                return {
+                    colors,
+                    showColor,
+                }
+            },
+        }
+        Vue.createApp(App).mount('#app') 
+    </script>
+</body>
+</html>

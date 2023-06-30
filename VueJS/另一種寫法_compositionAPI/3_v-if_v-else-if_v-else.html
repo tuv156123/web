@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app"> <!-- HTML DOM template -->
+        <h1>What didi you get in VueJS?</h1>
+        Your score: <input v-model="score">
+
+        <p v-if="score<0||score>100">Invalid score.</p>
+        <p v-else-if="score>=70">PASS!</p>
+        <p v-else>It's hard to pass.</p>
+    </div>
+
+    <script>
+        const {ref} = Vue
+        const App = {
+            setup(){
+                let message = ref('Hello')     
+                let score = ref(0)  
+
+                return {
+                    message,
+                    score,
+                }
+            },
+        }
+        Vue.createApp(App).mount('#app')  
+    </script>
+</body>
+</html>

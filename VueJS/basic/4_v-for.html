@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="./js/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"> <!-- HTML DOM template -->
+        <!-- 陣列 -->
+        <ul>
+            <li v-for="(color,index) in colors">{{index}}: {{color}}</li>
+        </ul>
+
+        <!-- 物件 -->
+        <ul>
+            <li v-for="(item,key) in man">{{key}}: {{item}}</li>
+        </ul>
+    </div>
+
+    <script>
+        // for(let i = 0; i < 5; i++){...}  // 針對陣列
+
+        // let man = {
+        //     name: 'Peter',
+        //     age: 40,
+        //     gender: 'male',
+        //     favoriateColor: ['white','gray','black'],
+        //     car: {
+        //         make: 'BMW',
+        //         mode: 'X5',
+        //         year: 2023,
+        //     },
+        //     retired: false,
+        // }
+
+        // for(let key in 物件或陣列){}
+        // for(let key in man){
+        //     console.log(key)       // 印出「:」左邊的 key 值
+        //     console.log(man[key])  // 印出「:」右邊的 value 值
+        // }
+
+        Vue.createApp({
+            data(){     // 變數放這裡
+                return {
+                    message: 'Hello',
+                    colors: ['red','orange','yellow','green','blue','indigo','violet'],
+                    man: {
+                        name: 'Peter',
+                        age: 40,
+                        gender: 'male',
+                        favoriateColor: ['white','gray','black'],
+                        car: {
+                            make: 'BMW',
+                            mode: 'X5',
+                            year: 2023,
+                        },
+                        retired: false,
+                    },
+                }
+            },       
+        }).mount('#app')
+    
+    </script>
+</body>
+</html>

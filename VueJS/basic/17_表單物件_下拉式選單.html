@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="./js/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"> 
+        <select v-model="selectedYear">
+            <option v-for="year in years">{{year}}</option>
+        </select>
+        <select v-model="selectedMonth">
+            <option v-for="month in 12">{{month}}</option>
+        </select>
+        <select v-model="selectedDate">
+            <option v-for="date in 31">{{date}}</option>
+        </select>      
+    </div>
+
+    <script>   
+        let month = 0
+        switch(month){
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                days = 31
+                break
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                days = 30
+                break
+            default:
+                days = 28   // 或西元年能被 4 整除 days = 29  
+        }  
+        Vue.createApp({
+            data(){
+                return {
+                    years: [2021,2022,2023,2024,2025,2026,2027,2028],
+
+                    // selectedYear: new Date().getFullYear(),
+                    // selectedMonth: new Date().getMonth() + 1,   // getMonth() 從 0 開始
+                    // selectedDate: new Date().getDate(),
+                }
+            },
+            methods: {},  
+            computed: {
+                selectedYear(){
+                    return new Date().getFullYear()
+                },
+                selectedMonth(){
+                    return new Date().getMonth() + 1
+                },
+                selectedDate(){
+                    return new Date().getDate()
+                },
+            },
+            
+        }).mount('#app')        
+    </script>
+</body>
+</html>

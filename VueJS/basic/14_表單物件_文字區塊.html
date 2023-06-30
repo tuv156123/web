@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="./js/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"> 
+        <!-- <input type="text" v-model="message">
+        <h2>{{message}}</h2> -->
+
+        <!-- 如果沒有 v-model, 如何做雙向綁定? -->
+        <input type="text" @keyup="setMessage" :value="message">
+        <h2>{{message}}</h2>
+        <hr>
+
+        <textarea v-model="message" cols="20" rows="5" @click="action"></textarea>
+        <p :style="setCSS">{{message}}</p>
+    </div>
+
+    <script>     
+        Vue.createApp({
+            data(){
+                return {
+                    message: '',       
+                }
+            },
+            methods: {
+                setMessage(e){
+                    this.message = e.target.value
+                },
+                action(e){
+                    // alert(getComputedStyle(e.target).font)  // 13.3333px monospace
+                },
+            },  
+            computed: { // 函數(方法)也可以放這裡，放在這裡的函數「不傳參數，有傳回值」
+                setCSS(){
+                    return {
+                        whiteSpace: 'pre',
+                        font: '13.33px monospace',
+                    }
+                },
+            },
+        }).mount('#app')
+
+        // <img src="" width="300">
+        // theImage.src = '../images/aaa.gif'
+        // theImage.width = 300
+        // theImage.style.width = '300px'
+    </script>
+</body>
+</html>
+
+<!-- 
+What did you 
+
+    use your 
+  computer
+for? 
+-->
+

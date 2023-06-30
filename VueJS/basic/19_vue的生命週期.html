@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="./js/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"> 
+        <!-- <button @click="update"> Add </button> -->
+        <button @click="count+=1"> Add </button>
+        <button id="delButton"> Delete </button>
+
+        <p>{{count}}</p>
+    <script> 
+        // Vue -- life cycle
+        // 建立階段: beforeCreate, created, beforeMount, mounted    
+        // 更新階段: beforeUpdate, updated      
+        // 銷毀階段: beforeUnmount, unmounted   
+
+        const App = Vue.createApp({
+            data(){
+                return {
+                    count: 0,
+                }
+            },
+            methods: {
+                // update(){
+                //     this.count += 1
+                // },
+            },  
+            computed: {},
+            beforeCreate() {
+                console.log(`beforeCreate() --> count: ${this.count}`)
+            },
+            created() {   // 常用
+                console.log(`created() --> count: ${this.count}`)
+            },
+            beforeMount() {},
+            mounted() {  // 常用，非同步大部分放這裡
+                
+            },
+            beforeUpdate() {
+                console.log(`beforeUpdate() --> count: ${this.count}`)
+            },
+            updated() {  // 常用
+                console.log(`updated() --> count: ${this.count}`)
+            },
+            beforeUnmount() {
+                console.log(`beforeUnmount() --> count: ${this.count}`)
+            },
+            unmounted() {
+                console.log(`unmounted() --> count: ${this.count}`)
+            },
+        })
+        
+        App.mount('#app')    
+        
+        document.getElementById('delButton').addEventListener('click',function(){
+            App.unmount()
+        })
+    </script>
+</body>
+</html>

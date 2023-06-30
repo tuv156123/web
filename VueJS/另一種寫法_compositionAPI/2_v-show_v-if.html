@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app"> <!-- HTML DOM template -->
+        <h1>{{message}}</h1>
+
+        <p v-show="loading">Loading(v-show)</p>
+        <p v-if="loading">Loading(v-if)</p>
+
+        <!-- if false, 檢查 devtools ==> Elements -->
+    </div>
+
+    <script>
+        const {ref} = Vue
+        const App = {
+            setup(){
+                let message = ref('Hello')     
+                let loading = ref(true)   
+
+                let score = 100
+
+                return {
+                    message,
+                    loading
+                }
+            },
+        }
+        Vue.createApp(App).mount('#app')    
+        
+    
+    </script>
+</body>
+</html>

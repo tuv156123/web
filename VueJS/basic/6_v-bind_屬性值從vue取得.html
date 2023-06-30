@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="./js/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"> <!-- HTML DOM template -->
+        <!-- <img src="https://stickershop.line-scdn.net/stickershop/v1/product/24630/LINEStorePC/main.png" alt="蠟筆小新"> -->
+    
+        <!-- 屬性值從 vue 取得 -->
+        <!-- <img v-bind:src="imgURL" v-bind:alt="title"> -->
+
+        <!-- v-bind 的縮寫是「:」 -->
+        <img :src="imgURL" :alt="title">
+
+        <hr v-for="color in colors" :color="color">
+
+    </div>
+
+    <script>        
+        Vue.createApp({
+            data(){     // 變數放這裡
+                return {
+                    message: 'Hello',
+                    imgURL: 'https://stickershop.line-scdn.net/stickershop/v1/product/24630/LINEStorePC/main.png',
+                    title: '蠟筆小新',
+                    colors: ['red','orange','yellow','green','blue','indigo','violet'],
+                }
+            },       
+        }).mount('#app')
+    </script>
+</body>
+</html>

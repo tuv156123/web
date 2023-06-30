@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>陣列解構 + 給預設值(function default) </title>
+</head>
+<body>
+    <script>   
+        // 1 傳數值進去，傳字串出來     
+        // const ArrToStr = arr => {
+        //     const mapStr = arr.map(function(item){
+        //         return item + ''
+        //     })
+            
+        //     return mapStr
+        // }
+        // console.log(ArrToStr([2,4,6,8,10]));
+
+        // 2 如果沒有傳資料，無法使用 map()
+        // console.log(ArrToStr());
+
+        // 3 如何解決以上問題? 舊的方式是 if else
+        // const ArrToStr = arr => {
+        //     if(!arr) {arr = []}
+
+        //     const mapStr = arr.map(function(item){
+        //         return item + ''
+        //     })
+            
+        //     return mapStr
+        // }
+        // console.log(ArrToStr());
+
+        // 4 ES6 的解決方法: 給預設值 (function default) 可以排除基本錯誤
+        // const ArrToStr = (arr = []) => {
+        //     const mapStr = arr.map(function(item){
+        //         return item + ''
+        //     })
+            
+        //     return mapStr
+        // }
+        // console.log(ArrToStr());
+
+        // 5 修改後
+        const ArrToStr = (arr = []) => {
+            if(typeof arr != 'object'){arr = []}
+            
+            const mapStr = arr.map( item =>  item + '')  
+
+            return mapStr
+        }
+        console.log(ArrToStr());
+        console.log(ArrToStr(123));
+        console.log(ArrToStr([2,4,6,8,10]));
+
+    </script>
+</body>
+</html>

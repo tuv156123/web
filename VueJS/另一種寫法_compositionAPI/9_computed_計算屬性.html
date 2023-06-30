@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@3"></script>
+
+</head>
+<body>
+    <div id="app"> <!-- HTML DOM template -->
+        <p>
+            身高(公分): <input v-model="height">
+        </p>
+        <p>
+            體重(公斤): <input v-model="weight">
+        </p>
+        <p>
+            BMI: <span>{{calculate}}</span>
+        </p>
+    </div>
+
+    <script>      
+        // BMI ==> 體重 (公斤) / (身高 / 100) 的平方   
+        const {ref, reactive, computed} = Vue
+        const App = {
+            setup(){
+                const height = ref(0)
+                const weight = ref(0)
+
+                const calculate = computed(() => {
+                    if(weight.value > 0 && height.value > 0){
+                        let bmi = weight.value / Math.pow(height.value / 100, 2)
+                        return bmi.toFixed(3)
+                    }else{
+                        return 0
+                    }
+                })
+
+                return {
+                    height,
+                    weight,
+                    calculate,
+                }
+            },
+        }
+        Vue.createApp(App).mount('#app')    
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery</title>
+    <style>
+        .highlight{
+            background-color: yellow;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"></script>
+    <script>
+        // JavaScript 搜尋的語法
+        // Array ===> includes()
+        // String ===> search(new RegExp())
+
+        $(function () {
+            /*=====
+            $('#search').keyup(function(){
+                let name = $(this).val()
+                // console.log(name);
+
+                $('ul>li>span').removeClass('highlight')
+
+                if($(this).val() != ''){
+                    // $('ul>li>span:contains('+ name +')').addClass('highlight')
+                    $(`ul>li>span:contains(${name})`).addClass('highlight')
+                }
+            })
+            =====*/
+
+            /*=====
+            $('#search').on('input',function(){
+                let name = $(this).val()
+                // console.log(name);
+
+                $('ul>li>span').removeClass('highlight')
+
+                if($(this).val() != ''){
+                    // $('ul>li>span:contains('+ name +')').addClass('highlight')
+                    $(`ul>li>span:contains(${name})`).addClass('highlight')
+                }
+            })
+            =====*/
+
+            $('#search').on('keyup search',function(){
+                let name = $(this).val()
+                // console.log(name);
+
+                $('ul>li>span').removeClass('highlight')
+
+                if($(this).val() != ''){
+                    // $('ul>li>span:contains('+ name +')').addClass('highlight')
+                    $(`ul>li>span:contains(${name})`).addClass('highlight')
+                }
+            })
+        });
+    </script>   
+</head>
+
+<body>
+    <p>
+        <label for="search">Search: </label>
+        <input type="search" id="search">
+    </p>
+    <ul>
+        <li><span>Ann Hathaway</span></li>
+        <li><span>Robert De Niro</span></li>
+        <li><span>Bruce Willis</span></li>
+        <li><span>Cybill Shepherd</span></li>
+        <li><span>Robert Readford</span></li>
+        <li><span>Maryl Streep</span></li>
+        <li><span>Bred Pitt</span></li>
+        <li><span>Robin Williams</span></li>
+        <li><span>Annete Bening</span></li>
+        <li><span>Robert Downey Jr.</span></li>
+        <li><span>Demi Moore</span></li>
+        <li><span>Angelina Jolie</span></li>
+    </ul>
+</body>
+
+</html>

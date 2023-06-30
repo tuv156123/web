@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="./js/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"> <!-- HTML DOM template -->
+        <h1>{{message}}</h1>
+        <button @click="action">Click me</button>
+    </div>
+       
+    <script> 
+        // Options API
+        // Vue.createApp({
+        //     data(){
+        //         return {
+        //             message: 'Hello',
+        //             score: 0,
+        //             loading: true,
+        //         }
+        //     },
+        //     methods: {
+        //         action(){
+        //             alert(`${this.message}, Vue!`)
+        //         },
+        //     },
+        // }).mount('#app')  
+        
+        // Composition API
+        const {ref, reactive} = Vue   // 從 global Vue 取 ref 出來使用
+
+        const App = {
+            setup(){
+                // let message = 'Hello'
+                let message = ref('Hello')
+                // Vue.ref(): 任何資料型態，無法對陣列和物件進行深層監聽，要用 .value 取值
+                // Vue.reactive(): 陣列和物件型態，可對陣列和物件進行深層監聽，不用 .value 取值
+
+                // const colors = reactive([])
+                // const man = reactive({})
+                let score = 0
+                let loading = true
+
+                // IIFE
+                const action = () => alert(`${message.value}, Vue!`)
+
+                return {
+                    message,   // message: message,
+                    action,    // action: action,
+                }
+            },
+        }
+        Vue.createApp(App).mount('#app')
+
+    </script>
+</body>
+</html>

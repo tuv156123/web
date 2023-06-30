@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>內建物件: Array</title>
+</head>
+<body>
+    <script>
+        1 建立 Array 物件
+            let arr = []
+            let arr = [2,4,6,'ABC',new Date(),true]
+
+            let arr = new Array()
+            let arr = new Array(2,4,6,'ABC',new Date(),true)
+
+        2 如何存取?
+            arr[0] ==> 2
+            arr[1] ==> 4
+
+            for(let i = 0; i < arr.length; i++){
+                console.log(arr[i]);
+            }
+
+        3 屬性: length
+
+        4 方法: 
+            新增刪除在前端: unshift(item), shift()
+            新增刪除在後端: push(item), pop()
+            新增刪除在任意端: splice()
+                splice(index)   // 刪除
+                splice(index, 筆數) // 刪除
+                splice(index, 筆數, 100, 200, 300) // 刪除，也可以新增
+
+            陣列組成字串: join()
+            尋找 index: indexOf() | lastIndexOf()
+
+            陣列 = 陣列.filter(function(data){return 符合篩選條件的資料})
+            陣列 = 陣列.map(function(data){return 逐個處理之後的結果})
+            值 = 陣列.reduce(function(accumulator,data){return 逐個處理，每次處理的結果放進累進器中})
+
+            foreach()
+
+    </script>
+</body>
+</html>

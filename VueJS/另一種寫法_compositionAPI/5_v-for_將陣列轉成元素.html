@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app"> <!-- HTML DOM template -->
+        <select v-model="selectedYear">
+            <option v-for="year in years">{{year}}</option>
+        </select>
+        <select v-model="selectedMonth">
+            <!-- <option v-for="month in months">{{month}}</option> -->
+            <option v-for="month in 12">{{month}}</option>
+        </select>
+        <select v-model="selectedDate">
+            <option v-for="date in 31">{{date}}</option>
+        </select>
+    </div>
+
+    <script> 
+        const {ref, reactive} = Vue
+        const App = {
+            setup(){
+                let message = ref('Hello')     
+                
+                const years = reactive([2021,2022,2023,2024,2025,2026,2027,2028])
+                const selectedYear = ref(new Date().getFullYear())
+                const selectedMonth = ref(new Date().getMonth() + 1)
+                const selectedDate = ref(new Date().getDate())
+
+                return {
+                    years,
+                    selectedYear,
+                    selectedMonth,
+                    selectedDate,
+                }
+            },
+        }
+        Vue.createApp(App).mount('#app')      
+
+    
+        // let month = 6
+        // switch(month){
+        //     case 1:
+        //     case 3:
+        //     case 5:
+        //     case 7:
+        //     case 8:
+        //     case 10:
+        //     case 12:
+        //         days = 31
+        //         break
+        //     case 4:
+        //     case 6:
+        //     case 9:
+        //     case 11:
+        //         days = 30
+        //         break
+        //     default:
+        //         days = 28   // 或西元年能被 4 整除 days = 29  
+        // }
+    </script>
+</body>
+</html>

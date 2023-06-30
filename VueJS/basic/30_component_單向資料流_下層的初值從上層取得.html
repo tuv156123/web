@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="./js/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"> <!-- HTML DOM template -->
+        <button @click="count+=1">Add</button>
+        <h3>root ==> {{count}}</h3>
+        <hr>
+
+        <counter :init="count"></counter>
+        <!-- counter 組件的值由 root 的 count 取得 -->
+    </div>
+       
+    <script> 
+        const App = Vue.createApp({
+            data(){
+                return {
+                    count: 0,
+                }
+            },
+
+            components: {                
+                counter: {  
+                    props: ['init'],
+                    data(){
+                        return {
+                            count: this.init,
+                        }
+                    },                 
+                    template: `
+                        <button @click="count+=1">Add</button>
+                        <h3>counter ==> {{count}}</h3>
+                    `,
+                },
+            },
+        }) 
+        App.mount('#app')        
+
+    </script>
+</body>
+</html>

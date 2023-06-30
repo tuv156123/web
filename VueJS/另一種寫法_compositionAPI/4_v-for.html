@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <div id="app"> <!-- HTML DOM template -->
+        <!-- 陣列 -->
+        <ul>
+            <li v-for="(color,index) in colors">{{index}}: {{color}}</li>
+        </ul>
+
+        <!-- 物件 -->
+        <ul>
+            <li v-for="(item,key) in man">{{key}}: {{item}}</li>
+        </ul>
+    </div>
+
+    <script>
+        const {ref, reactive} = Vue
+        const App = {
+            setup(){
+                let message = ref('Hello')     
+                
+                const colors = reactive(['red','orange','yellow','green','blue','indigo','violet'])
+                const man = reactive({
+                    name: 'Peter',
+                    age: 40,
+                    gender: 'male',
+                    favoriateColor: ['white','gray','black'],
+                    car: {
+                        make: 'BMW',
+                        mode: 'X5',
+                        year: 2023,
+                    },
+                    retired: false,
+                    birthday: new Date(1983,0,22),
+                })
+
+                return {
+                    colors,
+                    man,
+                }
+            },
+        }
+        Vue.createApp(App).mount('#app')  
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>html2canvas</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <h1>Lorem ipsum dolor sit amet.</h1>
+    <div id="capture" style="padding: 10px; background: #b555f5;width: 300px;">
+        <h3 style="color: #000; ">Hello world!</h3>
+        <img src="../../images/limes.jpg">
+    </div>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <script>
+        html2canvas(document.querySelector("#capture")).then(canvas => {
+            // document.body.appendChild(canvas)
+            document.body.insertBefore(canvas, document.body.firstChild)
+        });
+    </script>
+</body>
+</html>
