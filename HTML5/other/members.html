@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .menu{
+            list-style: none;
+            padding-inline-start: 20px;
+        }
+        .bold{
+            font: bold 20px Calibri;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"></script>
+    <script>
+        $(function(){
+            // 尋找 name 的第一個 li 小孩
+            // $(`.name li:nth-child(1)`).append(` (First)`)
+            // $(`.name li:eq(0)`).append(` (First)`)
+            // $(`.name li:first`).append(` (First)`)
+            $(`.name`).find(`li`).first().append(` (First)`)
+
+            $(`.name`).find(`li`).first().next().append(` (Second))`)
+            $(`.name`).find(`li`).last().append(` (Last)`)
+            // ======
+            
+            // $('.menu').find('li').first().addClass('bold')
+            // $('.menu').find('li').first().addClass('bold').nextAll().hide()
+            // $('.menu').find('li').first().addClass('bold').click(function(){}).nextAll().hide()
+            $('.menu').find('li').first().addClass('bold').click(function(){
+                // $(this).nextAll().show()
+                // $(this).nextAll().toggle()
+                $(this).nextAll().slideToggle()
+            }).nextAll().hide()
+
+        })
+    </script>
+</head>
+<body>
+    <ul class="name">
+        <li>Andy</li>
+        <li>Brian</li>
+        <li>Carl</li>
+        <li>Dale</li>
+        <li>Eric</li>
+    </ul>
+    <hr>
+
+    <ul class="menu">
+        <li>User</li>
+        <li>Setting</li>
+        <li>Log out</li>
+        <li>Delete account</li>
+        <li>Something else</li>
+        <li>Do nithing</li>
+    </ul>
+</body>
+</html>
